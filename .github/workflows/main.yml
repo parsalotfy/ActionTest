@@ -14,4 +14,8 @@ jobs:
         who-to-greet: 'Parsa'
     # Use the output from the `hello` step
     - name: Get the output time
+      id: step2
       run: echo "The time was ${{ steps.hello.outputs.time }}"
+    - name: Write my name
+      id: step3
+      run: echo "${{ secrets.GITHUB_ACTOR }}
