@@ -17,10 +17,11 @@ jobs:
         
     - name: Dockerise Job
       id: step1
-      using: 'docker'   
-      image: 'Dockerfile'
-      args: 
-        - $GITHUB_ACTOR
+      runs:
+         using: 'docker'   
+         image: 'Dockerfile'
+         args: 
+            - $GITHUB_ACTOR
          
   
     # Use the output from the `hello` step
