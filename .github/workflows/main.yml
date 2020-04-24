@@ -22,12 +22,12 @@ jobs:
     - name: Update and Upgrage
       id: step4
       run: |
-         apt update
-         apt upgrade
+         sudo apt update
+         sudo apt upgrade
          
     - name: Install git
       id: step5
-      run: apt install git
+      run: sudo apt install git
      
     - name: clone with secret
       id: step6
