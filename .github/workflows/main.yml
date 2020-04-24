@@ -23,44 +23,13 @@ jobs:
     
     - name: clone with secret
       id: step5
-      run: |
-           pwd
-           ls -la
-           git clone https://parsalotfy:${{ secrets.GITHUB_TOKEN }}@github.com/parsalotfy/ActionTest.git
-           pwd
-           ls -la
+      run: git clone https://parsalotfy:${{ secrets.GITHUB_TOKEN }}@github.com/parsalotfy/ActionTest.git           
     
-    - name: Change Directory
-      id: step6
-      run: |
-           ls -la
-           cd ActionTest/
-           pwd
-           ls -la
-      
-    - name: Set Email
+    - name: Set Email, Write, Commit, Push
       id: step7
       run: |
-           pwd 
-           ls -la
-           git config user.email parsalotfy@outlook.com
-           pwd
-           ls -la
-         
-    - name: Write to file
-      id: step8
-      run: echo $(date) >> README.md     
-     
-    - name: Commit changes 
-      id: step9
-      run: git commit -am $(date)
-     
-    - name: Push
-      id: step10
-      run: git push
-    
-         
-      
-      
-         
-       
+            cd ActionTest/            
+            git config user.email parsalotfy@outlook.com           
+            echo $(date) >> README.md     
+            git commit -am $(date)
+            git push            
