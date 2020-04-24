@@ -30,11 +30,15 @@ jobs:
     
     - name: Change Directory
       id: step6
-      run: cd ActionTest/
+      run: |
+           cd ActionTest/
+           pwd
       
     - name: Set Email
       id: step7
-      run: git config user.email parsalotfy@outlook.com
+      run: |
+           pwd 
+           git config user.email parsalotfy@outlook.com
          
     - name: Write to file
       id: step8
