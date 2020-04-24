@@ -23,19 +23,29 @@ jobs:
     
     - name: clone with secret
       id: step5
-      run: git clone https://parsalotfy:${{ secrets.GITHUB_TOKEN }}@github.com/parsalotfy/ActionTest.git
+      run: |
+           pwd
+           ls -la
+           git clone https://parsalotfy:${{ secrets.GITHUB_TOKEN }}@github.com/parsalotfy/ActionTest.git
+           pwd
+           ls -la
     
     - name: Change Directory
       id: step6
       run: |
+           ls -la
            cd ActionTest/
            pwd
+           ls -la
       
     - name: Set Email
       id: step7
       run: |
            pwd 
+           ls -la
            git config user.email parsalotfy@outlook.com
+           pwd
+           ls -la
          
     - name: Write to file
       id: step8
