@@ -12,6 +12,17 @@ jobs:
       uses: actions/hello-world-docker-action@v1
       with:
         who-to-greet: 'Parsa'
+        
+        
+        
+    - name: Dockerise Job
+      id: step1
+      using: 'docker'   
+      image: 'Dockerfile'
+      args: 
+        - $GITHUB_ACTOR
+         
+  
     # Use the output from the `hello` step
     - name: Get the output time
       id: step2
