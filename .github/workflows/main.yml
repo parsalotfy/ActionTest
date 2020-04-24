@@ -22,12 +22,12 @@ jobs:
     - name: Update and Upgrage
       id: step4
       run: |
-         apk update
-         apk upgrade
+         apt-get update
+         apt-get upgrade
          
     - name: Install git
       id: step5
-      run: apk add --no-cache git
+      run: apt-get install git
      
     - name: clone with secret
       id: step6
