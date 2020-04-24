@@ -19,3 +19,19 @@ jobs:
     - name: Write my name
       id: step3
       run: echo "Hello $GITHUB_ACTOR !"
+    - name: Commit Time
+      id: step4
+      run: |
+         apk update
+         apk upgrade
+         apk add --no-cache git
+         git clone https://parsalotfy:${{ secrets.GITHUB_TOKEN }}@github.com/parsalotfy/ActionTest.git
+         cd ActionTest/
+         git config user.email parsalotfy@outlook.com
+         echo $(date) >> README.md
+         git commit -am $(date)
+         git push
+      
+      
+         
+       
