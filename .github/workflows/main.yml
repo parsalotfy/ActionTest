@@ -22,14 +22,30 @@ jobs:
          
     
     - name: clone with secret
-      id: step5
+      id: step4
       run: git clone https://parsalotfy:${{ secrets.GITHUB_TOKEN }}@github.com/parsalotfy/ActionTest.git           
     
-    - name: Set Email, Write, Commit, Push
-      id: step7
+    - name: Set Email
+      id: step5
       run: |
             cd ActionTest/            
             git config user.email parsalotfy@outlook.com           
+            
+            
+    - name: Write to file
+      id: step6
+      run: |
+            cd ActionTest/ 
             echo $(date) >> README.md     
+            
+    - name: Commit
+      id: step7
+      run: |
+            cd ActionTest/ 
             git commit -am $(date)
+            
+    - name: Push            
+      id: step8
+      run: |
+            cd ActionTest/ 
             git push            
