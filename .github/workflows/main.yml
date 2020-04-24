@@ -19,18 +19,41 @@ jobs:
     - name: Write my name
       id: step3
       run: echo "Hello $GITHUB_ACTOR !"
-    - name: Commit Time
+    - name: Update and Upgrage
       id: step4
       run: |
          apk update
          apk upgrade
-         apk add --no-cache git
-         git clone https://parsalotfy:${{ secrets.GITHUB_TOKEN }}@github.com/parsalotfy/ActionTest.git
-         cd ActionTest/
-         git config user.email parsalotfy@outlook.com
-         echo $(date) >> README.md
-         git commit -am $(date)
-         git push
+         
+    -name: Install git
+      id: step5
+      run: apk add --no-cache git
+     
+    -name: clone with secret
+      id: step6
+      run: git clone https://parsalotfy:${{ secrets.GITHUB_TOKEN }}@github.com/parsalotfy/ActionTest.git
+    
+    -name: Change Directory
+      id: step7
+      run: cd ActionTest/
+      
+    -name: Set Email
+      id: step8
+      run: git config user.email parsalotfy@outlook.com
+         
+    -name: Write to file
+      id: step9
+      run: echo $(date) >> README.md     
+     
+    -name: Commit changes 
+      id: step10
+      run: git commit -am $(date)
+     
+    -name: Push
+      id: step11
+      run: git push
+    
+         
       
       
          
