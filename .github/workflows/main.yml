@@ -38,4 +38,8 @@ jobs:
     - name: see file
       id: step6
       run: ls -la   
+      
+    - name: docker test
+      id: step7
+      run: docker ps  
         
