@@ -7,27 +7,21 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
+              
     - name: Hello world action step
       id: hello
       uses: actions/hello-world-docker-action@v1
       with:
         who-to-greet: 'Parsa'
-        
-        
-        
-    - name: Dockerise Job
-      id: step1
-      runs:
-         using: 'docker'   
-         image: 'Dockerfile'
-         args: 
-            - $GITHUB_ACTOR
+             
          
   
     # Use the output from the `hello` step
     - name: Get the output time
       id: step2
       run: echo "The time was ${{ steps.hello.outputs.time }}"
+      
+      
     - name: Write my name
       id: step3
       run: echo "Hello $GITHUB_ACTOR !"
@@ -35,29 +29,13 @@ jobs:
     
     - name: clone with secret
       id: step4
-      run: git clone https://parsalotfy:${{ secrets.GITHUB_TOKEN }}@github.com/parsalotfy/ActionTest.git           
+      run: git clone https://parsalotfy:${{ secrets.GITHUB_TOKEN }}@github.com/parsalotfy/ActionTest.git          
     
-    - name: Set Email
+    - name: Create file
       id: step5
-      run: |
-            cd ActionTest/            
-            git config user.email parsalotfy@outlook.com           
-            
-            
-    - name: Write to file
+      run: touch 1.txt
+      
+    - name: see file
       id: step6
-      run: |
-            cd ActionTest/ 
-            echo $(date) >> README.md     
-            
-    - name: Commit
-      id: step7
-      run: |
-            cd ActionTest/ 
-            git commit -am $(date)
-            
-    - name: Push            
-      id: step8
-      run: |
-            cd ActionTest/ 
-            git push            
+      run: ls -la   
+        
